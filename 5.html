@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Slider With Next And Previous Buttons</title>
+    <link rel="stylesheet" href="6.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  </head>
+  <body>
+
+
+
+
+
+
+
+
+
+    - 
+                  <div class="maps">
+                  <iframe width='1530' height='430' frameborder='0' scrolling="no" marginheight="0" marginwidth="0"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.8844579353486!2d120.97320121036053!3d14.605657185822368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca045466c0d5%3A0x2847f3dd1cf41582!2sRecto%20Ave%2C%20Binondo%2C%20Manila%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1689496492170!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div> -->
+/* 
+  .maps {
+    position:absolute;
+    left: 5px;
+    top: 2780px;
+    height: 50px;
+
+    /* width: 500px; */ */
+
+    
+    
+  /* } */ */
+
+    <div class="slider">
+      <div class="slide active">
+        <img src="1.jpg" alt="">
+        <div class="info">
+          <h2>Winter Mountains</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="2.jpg" alt="">
+        <div class="info">
+          <h2>Tropical Desert</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="3.jpg" alt="">
+        <div class="info">
+          <h2>Steaming Volcanoes</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="4.jpg" alt="">
+        <div class="info">
+          <h2>Mountain River</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="5.jpg" alt="">
+        <div class="info">
+          <h2>Egypt Pyramids</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="navigation">
+        <i class="fas fa-chevron-left prev-btn"></i>
+        <i class="fas fa-chevron-right next-btn"></i>
+      </div>
+      <div class="navigation-visibility">
+        <div class="slide-icon active"></div>
+        <div class="slide-icon"></div>
+        <div class="slide-icon"></div>
+        <div class="slide-icon"></div>
+        <div class="slide-icon"></div>
+
+
+        <script type="text/javascript">
+          const slider = document.querySelector(".slider");
+          const nextBtn = document.querySelector(".next-btn");
+          const prevBtn = document.querySelector(".prev-btn");
+          const slides = document.querySelectorAll(".slide");
+          const slideIcons = document.querySelectorAll(".slide-icon");
+          const numberOfSlides = slides.length;
+          var slideNumber = 0;
+      
+          //image slider next button
+          nextBtn.addEventListener("click", () => {
+            slides.forEach((slide) => {
+              slide.classList.remove("active");
+            });
+            slideIcons.forEach((slideIcon) => {
+              slideIcon.classList.remove("active");
+            });
+      
+            slideNumber++;
+      
+            if(slideNumber > (numberOfSlides - 1)){
+              slideNumber = 0;
+            }
+      
+            slides[slideNumber].classList.add("active");
+            slideIcons[slideNumber].classList.add("active");
+          });
+      
+          //image slider previous button
+          prevBtn.addEventListener("click", () => {
+            slides.forEach((slide) => {
+              slide.classList.remove("active");
+            });
+            slideIcons.forEach((slideIcon) => {
+              slideIcon.classList.remove("active");
+            });
+      
+            slideNumber--;
+      
+            if(slideNumber < 0){
+              slideNumber = numberOfSlides - 1;
+            }
+      
+            slides[slideNumber].classList.add("active");
+            slideIcons[slideNumber].classList.add("active");
+          });
+      
+          //image slider autoplay
+          var playSlider;
+      
+          var repeater = () => {
+            playSlider = setInterval(function(){
+              slides.forEach((slide) => {
+                slide.classList.remove("active");
+              });
+              slideIcons.forEach((slideIcon) => {
+                slideIcon.classList.remove("active");
+              });
+      
+              slideNumber++;
+      
+              if(slideNumber > (numberOfSlides - 1)){
+                slideNumber = 0;
+              }
+      
+              slides[slideNumber].classList.add("active");
+              slideIcons[slideNumber].classList.add("active");
+            }, 4000);
+          }
+          repeater();
+      
+          //stop the image slider autoplay on mouseover
+          slider.addEventListener("mouseover", () => {
+            clearInterval(playSlider);
+          });
+      
+          //start the image slider autoplay again on mouseout
+          slider.addEventListener("mouseout", () => {
+            repeater();
+          });
+          </script>
+            
+
+      </div>
+    </div>
+  </body>
+</html>
+      
